@@ -124,13 +124,33 @@
 
 
         }
-
     
-        for (let key in resume) 
-         console.log(`${key}: ${resume[key]}`);
-      
-  
+    let fn1 = function(obj){
+        for(var key in resume){
+        if(resume.hasOwnProperty(key)) {
+            var val = resume[key];
+            if(Array.isArray(val)){
+                console.log(key + " :");
+                for(var i =0;i<val.length;i++){
+                    for(key1 in val[i]) {
+                        console.log(key1 + " :" + val[i][key1]);
+                    }
+                    console.log("  ");
+                }
+                console.log("  ");
+            }
+            else if (typeof val == "object"){
+                console.log(key  + " : " + JSON.stringify(val));
+            }
+            else{
+                console.log(key + " : "+val);
+            }
+        }
+        }
 
+
+    }
+    fn1(resume);
     </script>
 </body>
 </html>
